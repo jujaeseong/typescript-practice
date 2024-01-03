@@ -12,3 +12,9 @@ The purpose of this project is to:
 4. Gain experience with type inference and type annotations.
 5. Work with the module system.
 6. Integrate TypeScript with other JavaScript libraries and frameworks.
+
+### Basic-Types
+
+- calculator
+- cordinate game
+- loadingState
