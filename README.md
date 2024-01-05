@@ -18,3 +18,7 @@ The purpose of this project is to:
 - calculator
 - cordinate game
 - loadingState
+
+### OOP
+
+- string type Stack

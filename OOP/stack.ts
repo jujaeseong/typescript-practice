@@ -1,55 +1,61 @@
 {
-  class Node {
-    constructor(private _data: string, private _preNode: Node | null) {}
-
-    get data(): string {
-      return this._data;
-    }
-
-    get preNode(): Node | null {
-      return this._preNode;
-    }
-  }
+  type Node = {
+    readonly data: string;
+    readonly preNode?: Node;
+  };
 
   interface Stackable {
+    readonly size: number;
     push(data: string): void;
-    pop(): string | undefined;
-    peek(): string | undefined;
+    pop(): string;
+    peek(): string;
     isEmpty(): boolean;
   }
 
   class Stack implements Stackable {
-    private pointer: Node | null;
+    private pointer?: Node;
+    private _size: number = 0;
 
-    constructor() {
-      this.pointer = null;
+    constructor(private capacity: number) {}
+
+    get size(): number {
+      return this._size;
     }
 
     push(data: string): void {
-      const newNode = new Node(data, this.pointer);
+      if (this.size === this.capacity) {
+        throw new Error('Stack is Full!');
+      }
+      const newNode: Node = { data, preNode: this.pointer };
       this.pointer = newNode;
+      this._size++;
     }
 
-    pop(): string | undefined {
-      if (this.pointer === null) {
-        return undefined;
+    pop(): string {
+      if (this.pointer == null) {
+        throw new Error('Stack is Empty!');
       } else {
         const lastNodeData = this.pointer.data;
         this.pointer = this.pointer.preNode;
+        this._size--;
         return lastNodeData;
       }
     }
 
-    peek(): string | undefined {
-      return this.pointer?.data;
+    peek(): string {
+      if (this.pointer == null) {
+        throw new Error('Stack is Empty!');
+      } else {
+        return this.pointer.data;
+      }
     }
 
     isEmpty(): boolean {
-      return this.pointer === null;
+      return this._size === 0;
     }
   }
 
-  const newStack = new Stack();
+  const newStack = new Stack(10);
   newStack.push('1');
   newStack.push('2');
   console.log(newStack.isEmpty());
