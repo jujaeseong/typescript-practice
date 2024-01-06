@@ -22,3 +22,7 @@ The purpose of this project is to:
 ### OOP
 
 - string type Stack
+
+### Generic
+
+- stack with Generic
