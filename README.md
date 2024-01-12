@@ -26,3 +26,7 @@ The purpose of this project is to:
 ### Generic
 
 - stack with Generic
+
+### Board-Motion
+
+- Motion Board is a simple TypeScript (TS) project that provides a basic list-type board for your needs.
